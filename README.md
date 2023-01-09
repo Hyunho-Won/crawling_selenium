@@ -1,17 +1,13 @@
-# Dynamic Web Crawling with Selenium
+# Make accepted paper lists with Selenium
 To make lists of accepted papers in multiple conferenes, we use dynamic web crawling with selenium.
 
 ## Introduction
-### Crawling
-
 ### Dynamic website
 This refers to a site where additional information is updated only when the user performs a specific action (ex. click, scroll).
 Therefore, in order to obtain the desired information, specific actions must be performed to update the data in html.
 
 ### Selenium
 It is a framework for web automation.
-셀레니움으로 동작을 지시하면 웹드라이버에서 동작을 수행한다.
-Selenium acts as an automatic action through Python.   
 When instructing the action with the selenium, the operation is performed in the web driver.
 
 ```py
@@ -28,16 +24,31 @@ pip install sleep
 ```
 
 ## Code
+
+```py
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+import csv
+from time import sleep
+```
+Save as a csv file.
+```py
 csv_filename = "Paper list.csv"
 csv_open = open(csv_filename, "w+", encoding="utf-8")
 csv_writer = csv.writer(csv_open)
 csv_writer.writerow(("Title","Author"))
-
-
+```
+Open a browser with a specific url through webdriver. Then 단일 element에 접근한다.
+```py
 driver = webdriver.Chrome()
 driver.implicitly_wait(3)
 driver.get('https://openreview.net/group?id=ICLR.cc/2022/Conference#poster-submissions')
-
+site_body = driver.find_element(By.CSS_SELECTOR, 'body')
+```
+Just detemine the range for the number of pages(ii) and use the selector to determine desired list items. It scrolls down to look up the data and saves the title of the paper and the author's name. Then go to next page by .click().
+```py
 site_body = driver.find_element(By.CSS_SELECTOR, 'body')
 
 for ii in range(18):
