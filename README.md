@@ -1,12 +1,12 @@
-# Make accepted paper lists with Selenium
+# Dynamic web crawling with selenium
 To make lists of accepted papers in multiple conferenes, we use dynamic web crawling with selenium.
 
 ## Introduction
-### Dynamic website
+#### Dynamic website
 This refers to a site where additional information is updated only when the user performs a specific action (ex. click, scroll).
 Therefore, in order to obtain the desired information, specific actions must be performed to update the data in html.
 
-### Selenium
+#### Selenium
 It is a framework for web automation.
 When instructing the action with the selenium, the operation is performed in the web driver.
 
@@ -75,3 +75,7 @@ for ii in range(18):
         
 csv_open.close()
 ```
+
+# Result
+We can make accepted paper list easily.    
+![화면 캡처 2023-01-09 202605](https://user-images.githubusercontent.com/122242141/211298174-f60e50e1-d5a4-47b4-aaeb-02688795018d.png)
