@@ -7,6 +7,7 @@ This refers to a site where additional information is updated only when the user
 Therefore, in order to obtain the desired information, specific actions must be performed to update the data in html.
 
 #### Selenium
+https://www.selenium.dev/   
 It is a framework for web automation.
 When instructing the action with the selenium, the operation is performed in the web driver.
 
