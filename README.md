@@ -2,9 +2,18 @@
 To make lists of accepted papers in multiple conferenes, we use dynamic web crawling with selenium.
 
 ## Introduction
+### Crawling
+
+### Dynamic website
+This refers to a site where additional information is updated only when the user performs a specific action (ex. click, scroll).
+Therefore, in order to obtain the desired information, specific actions must be performed to update the data in html.
+
 ### Selenium
-파이썬을 통해 동작을 자동으로 시키는 역할을 한다. 
+It is a framework for web automation.
 셀레니움으로 동작을 지시하면 웹드라이버에서 동작을 수행한다.
+Selenium acts as an automatic action through Python.   
+When instructing the action with the selenium, the operation is performed in the web driver.
+
 ```py
 from selenium import webdriver
 ```
@@ -52,6 +61,6 @@ for ii in range(18):
     
     if ii != 17:
         driver.find_element(By.CSS_SELECTOR,'#poster-submissions > nav > ul > li:nth-child(13) > a').click()
-    
+        
 csv_open.close()
 ```
