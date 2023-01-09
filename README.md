@@ -40,11 +40,11 @@ csv_open = open(csv_filename, "w+", encoding="utf-8")
 csv_writer = csv.writer(csv_open)
 csv_writer.writerow(("Title","Author"))
 ```
-Open a browser with a specific url through webdriver. Then 단일 element에 접근한다.
+Open a browser with a specific url through webdriver. Then it approaches a single element.
 ```py
 driver = webdriver.Chrome()
 driver.implicitly_wait(3)
-driver.get('https://openreview.net/group?id=ICLR.cc/2022/Conference#poster-submissions')
+driver.get('User url')
 site_body = driver.find_element(By.CSS_SELECTOR, 'body')
 ```
 Just detemine the range for the number of pages(ii) and use the selector to determine desired list items. It scrolls down to look up the data and saves the title of the paper and the author's name. Then go to next page by .click().
@@ -59,19 +59,19 @@ for ii in range(18):
     html = driver.page_source
     #driver.quit()
     bs = BeautifulSoup(html, "html.parser")
-    total_list = bs.select("#poster-submissions > ul > li")
+    total_list = bs.select("User selector")
     print(len(total_list))
     
     for i in total_list:
-        title = i.select_one("#poster-submissions > ul > li > h4 > a:nth-child(1)").text
-        author = i.select_one("#poster-submissions > ul > li > div.note-authors > a").text
+        title = i.select_one("User selector").text
+        author = i.select_one("User selector").text
         csv_writer.writerow((title,author))
            
     sleep(1)
 
     
     if ii != 17:
-        driver.find_element(By.CSS_SELECTOR,'#poster-submissions > nav > ul > li:nth-child(13) > a').click()
+        driver.find_element(By.CSS_SELECTOR,'User selector').click()
         
 csv_open.close()
 ```
