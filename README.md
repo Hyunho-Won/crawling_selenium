@@ -18,10 +18,9 @@ from selenium import webdriver
 ## Installation
 ```py
 pip install BeaurifulSoup
-pip install webdriver
 pip install selenium
 pip install csv
-pip install sleep
+pip install python-time
 ```
 
 ## Code
